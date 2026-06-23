@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OfficeAcademy - Formations Word, Excel, PowerPoint</title>
+    <style>
+        /* --- VARIABLES & PALETTE DE COULEURS --- */
+        :root {
+            --bg-dark: #0b0f19;
+            --bg-card: #131c2e;
+            --bg-input: #1e293b;
+            --text-light: #ffffff;
+            --text-muted: #94a3b8;
+            
+            /* Couleurs Officielles Microsoft */
+            --color-word: #2b579a;
+            --color-excel: #107c41;
+            --color-pp: #b7472a;
+            --color-gradient: linear-gradient(135deg, #2b579a, #107c41, #b7472a);
+            
+            --ads-bg: #1e293b;
+        }
+
+        /* --- RESET INITIAL --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- KEYFRAMES (ANIMATIONS CSS POUR LE PORTFOLIO) --- */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 5px rgba(16, 124, 65, 0.2); }
+            50% { box-shadow: 0 0 20px rgba(16, 124, 65, 0.6); }
+            100% { box-shadow: 0 0 5px rgba(16, 124, 65, 0.2); }
+        }
+
+        /* --- EN-TÊTE & MENU HAMBURGER (SANS JAVASCRIPT) --- */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(11, 15, 25, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #1e293b;
+            z-index: 1000;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            text-decoration: none;
+            color: var(--text-light);
+            background: var(--color-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Checkbox magique masquée pour l'état du menu */
+        .menu-checkbox {
+            display: none;
+        }
+
+        .menu-label {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .menu-label span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--text-light);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        /* Animation de soulignement au survol */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* --- ZONES STRATÉGIQUES GOOGLE ADSENSE & AFFILIATION --- */
+        .ads-banner {
+            background-color: var(--ads-bg);
+            border: 2px dashed #334155;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            max-width: 900px;
+            margin: 40px auto;
+            color: var(--text-muted);
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .affiliate-badge {
+            background: rgba(251, 191, 36, 0.1);
+            border: 1px solid #fbbf24;
+            color: #fbbf24;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* --- HERO SECTION (ACCUEIL MAGNIFIQUE) --- */
+        .hero {
+            padding: 160px 5% 80px 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 span {
+            background: linear-gradient(90deg, #3b82f6, #107c41, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            color: var(--text-muted);
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 550px;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #107c41);
+            color: white;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+        }
+
+        .hero-image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Illustration animée représentant la suite Office */
+        .office-sphere {
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(30,41,59,1) 0%, rgba(15,23,42,1) 100%);
+            border-radius: 50%;
+            position: relative;
+            box-shadow: 0 0 50px rgba(59, 130, 246, 0.2);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .icon-box {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border-radius: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            color: white;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .icon-box:hover {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .box-word { background-color: var(--color-word); top: 20px; left: -20px; }
+        .box-excel { background-color: var(--color-excel); bottom: 40px; right: -20px; animation: pulseGlow 3s infinite; }
+        .box-pp { background-color: var(--color-pp); top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+        /* --- CARDS DE FORMATION (CSS GRID & ANIMATIONS FLUIDES) --- */
+        .courses-section {
+            padding: 80px 5%;
+            max-width: 1300px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            font-weight: 800;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            background-color: var(--bg-card);
+            border: 1px solid #1e293b;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Effet 3D et bordure lumineuse au survol */
+        .course-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-word:hover { border-color: var(--color-word); }
+        .card-excel:hover { border-color: var(--color-excel); }
+        .card-pp:hover { border-color: var(--color-pp); }
+
+        .card-header {
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            color: white;
+            font-size: 48px;
+        }
+
+        .bg-w { background: linear-gradient(135deg, #1b3a6b, var(--color-word)); }
+        .bg-e { background: linear-gradient(135deg, #0b4d28, var(--color-excel)); }
+        .bg-p { background: linear-gradient(135deg, #782e1c, var(--color-pp)); }
+
+        .card-body {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-body h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .card-body p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .modules-list {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .modules-list li {
+            font-size: 14px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modules-list li::before {
+            content: '✓';
+            color: #107c41;
+            font-weight: bold;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        /* --- RESPONSIVE DESIGN & HAMBURGER HACK --- */
+        @media (max-width: 768px) {
+            .menu-label {
+                display: flex; /* On affiche le bouton burger */
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--bg-dark);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                gap: 40px;
+                transition: left 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+                border-top: 1px solid #1e293b;
+            }
+
+            .nav-links a {
+                font-size: 20px;
+            }
+
+            /* Logique de bascule du menu si coché */
+            .menu-checkbox:checked ~ .nav-links {
+                left: 0;
+            }
+
+            /* Transformations de l'icône hamburger en 'X' à l'activation */
+            .menu-checkbox:checked ~ .menu-label span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .menu-checkbox:checked ~ .menu-label span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-checkbox:checked ~ .menu-label span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 120px;
+            }
+
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            .cta-group {
+                justify-content: center;
+            }
+
+            .hero-image-container {
+                margin-top: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRE DE NAVIGATION RESPONSIVE -->
+    <header class="header">
+        <a href="#" class="logo">OfficeAcademy</a>
+        
+        <!-- Toggle d'état HTML pur -->
+        <input type="checkbox" id="nav-toggle" class="menu-checkbox">
+        
+        <label for="nav-toggle" class="menu-label">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <ul class="nav-links">
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#formations">Formations</a></li>
+            <li><a href="#bonus">Affiliation</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </header>
+
+    <!-- BANNIÈRE ADSENSE SUPÉRIEURE (Zone stratégique à haut clic) -->
+    <div style="margin-top: 90px;">
+        <div class="ads-banner">
+            <!-- Remplacer ce bloc par votre code script Google AdSense -->
+            <p>[ EMPLACEMENT PUBLICITÉ GOOGLE ADSENSE - BANNIÈRE HORIZONTALE 728x90 ]</p>
+            <small>Publicité ciblée sur les outils bureautiques</small>
+        </div>
+    </div>
+
+    <!-- SECTION D'ACCUEIL (HERO) -->
+    <section class="hero" id="accueil">
+        <div class="hero-content">
+            <span class="affiliate-badge">🔥 Offre Spéciale d'été - Éligible CPF</span>
+            <h1>Maîtrisez la Suite Office et <span>Boostez votre Carrière</span></h1>
+            <p>Des formations pratiques et complètes de débutant à expert sur Microsoft Word, Excel et PowerPoint. Prenez le contrôle de vos documents et tableurs dès aujourd'hui.</p>
+            <div class="cta-group">
+                <a href="#formations" class="btn btn-primary">Découvrir nos cours</a>
+            </div>
+        </div>
+        <div class="hero-image-container">
+            <div class="office-sphere">
+                <div class="icon-box box-word">W</div>
+                <div class="icon-box box-excel">X</div>
+                <div class="icon-box box-pp">P</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION GRILLE DE FORMATIONS -->
+    <section class="courses-section" id="formations">
+        <h2 class="section-title">Nos Programmes Clé en Main</h2>
+        
+        <div class="courses-grid">
+            
+            <!-- CARTE WORD -->
+            <div class="course-card card-word">
+                <div class="card-header bg-w">W</div>
+                <div class="card-body">
+                    <div>
+                        <span class="affiliate-badge">🔗 Lien d'affiliation Amazon Livres</span>
+                        <h3>Formation Microsoft Word Pro</h3>
+                        <p>Apprenez à rédiger des rapports parfaits, automatiser vos mises en page et créer des designs de documents professionnels complexes.</p>
+                        <ul class="modules-list">
+                            <li>Styles, Thèmes & Table des matières</li>
+                            <li>Publipostage et Tableaux avancés</li>
+                            <li>Gestion des longs documents</li>
+                        </ul>
+                    </div>
+                    <div class="price-row">
+                        <span class="price">49€</span>
+                        <a href="#" class="btn btn-primary" style="padding: 8px 16px; font-size: 13px;">S'inscrire</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARTE EXCEL (La plus vendeuse / rentable) -->
+            <div class="course-card card-excel">
+                <div class="card-header bg-e">X</div>
+                <div class="card-body">
+                    <div>
+                        <span class="affiliate-badge">⭐ Best Seller - Recommandé</span>
+                        <h3>Expertise Microsoft Excel</h3>
+                        <p>Le guide ultime des formules complexes, des Tableaux Croisés Dynamiques (TCD) et des bases de l'automatisation de données graphiques.</p>
+                        <ul class="modules-list">
+                            <li>RECHERCHEV, RECHERCHEX & Fonctions SI</li>
+                            <li>Tableaux croisés dynamiques complets</li>
+                            <li>Introduction aux Macros et VBA</li>
+                        </ul>
+                    </div>
+                    <div class="price-row">
+                        <span class="price">79€</span>
+                        <a href="#" class="btn btn-primary" style="padding: 8px 16px; font-size: 13px;">S'inscrire</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARTE POWERPOINT -->
+            <div class="course-card card-pp">
+                <div class="card-header bg-p">P</div>
+                <div class="card-body">
+                    <div>
+                        <span class="affiliate-badge">🎨 Design & Storytelling</span>
+                        <h3>PowerPoint Masterclass</h3>
+                        <p>Ne faites plus jamais de présentations ennuyeuses. Maîtrisez le design de diapositives d'impact, les animations complexes et les transitions Morphose.</p>
+                        <ul class="modules-list">
+                            <li>Règles de composition d'impact</li>
+                            <li>Transitions avancées (Morphose)</li>
+                            <li>Export vidéo et présentations interactives</li>
+                        </ul>
+                    </div>
+                    <div class="price-row">
+                        <span class="price">49€</span>
+                        <a href="#" class="btn btn-primary" style="padding: 8px 16px; font-size: 13px;">S'inscrire</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- BANNIÈRE ADSENSE INFERIEURE (Zone de sortie pour retenir les clics sortants) -->
+    <section id="bonus">
+        <div class="ads-banner">
+            <!-- Remplacer ce bloc par votre code script Google AdSense -->
+            <p>[ EMPLACEMENT PUBLICITÉ GOOGLE ADSENSE - ANNONCE DE CONTENU CORRESPONDANT 336x280 ]</p>
+            <small>Partenaire officiel de contenu éducatif informatique</small>
+        </div>
+    </section>
+
+    <!-- FOOTER / ZONE DE LIENS DE PARTENARIATS -->
+    <footer style="padding: 40px 5%; text-align: center; border-top: 1px solid #1e293b; color: var(--text-muted); font-size: 14px;" id="contact">
+        <p>© 2026 OfficeAcademy. Tous droits réservés.</p>
+        <p style="margin-top: 10px; font-size: 12px;">En tant que partenaire, ce site perçoit une commission sur les outils ou ouvrages bureautiques recommandés.</p>
+    </footer>
+
+</body>
+</html>
