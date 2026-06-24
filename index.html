@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8"viewporteta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OfficeAcademy - Formations Word, Excel, PowerPoint</title>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7752073455810269"
-     crossorigin="anonymous"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7752073455810269"
-     crossorigin="anonymous"></script>
+    
+    <!-- Code Google AdSense Unique et Nettoyé -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7752073455810269" crossorigin="anonymous"></script>
+
     <style>
         /* --- VARIABLES & PALETTE DE COULEURS --- */
         :root {
@@ -41,7 +42,7 @@
             line-height: 1.6;
         }
 
-        /* --- KEYFRAMES (ANIMATIONS CSS POUR LE PORTFOLIO) --- */
+        /* --- KEYFRAMES --- */
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
@@ -64,7 +65,7 @@
             100% { box-shadow: 0 0 5px rgba(16, 124, 65, 0.2); }
         }
 
-        /* --- EN-TÊTE & MENU HAMBURGER (SANS JAVASCRIPT) --- */
+        /* --- EN-TÊTE & MENU HAMBURGER --- */
         .header {
             position: fixed;
             top: 0;
@@ -91,7 +92,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Checkbox magique masquée pour l'état du menu */
         .menu-checkbox {
             display: none;
         }
@@ -129,7 +129,6 @@
             padding: 5px 0;
         }
 
-        /* Animation de soulignement au survol */
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -145,7 +144,7 @@
             width: 100%;
         }
 
-        /* --- ZONES STRATÉGIQUES GOOGLE ADSENSE & AFFILIATION --- */
+        /* --- STRATÉGIE PUBS & AFFILIATION --- */
         .ads-banner {
             background-color: var(--ads-bg);
             border: 2px dashed #334155;
@@ -170,7 +169,7 @@
             margin-bottom: 10px;
         }
 
-        /* --- HERO SECTION (ACCUEIL MAGNIFIQUE) --- */
+        /* --- HERO SECTION --- */
         .hero {
             padding: 160px 5% 80px 5%;
             display: flex;
@@ -241,7 +240,6 @@
             position: relative;
         }
 
-        /* Illustration animée représentant la suite Office */
         .office-sphere {
             width: 320px;
             height: 320px;
@@ -274,7 +272,7 @@
         .box-excel { background-color: var(--color-excel); bottom: 40px; right: -20px; animation: pulseGlow 3s infinite; }
         .box-pp { background-color: var(--color-pp); top: 50%; left: 50%; transform: translate(-50%, -50%); }
 
-        /* --- CARDS DE FORMATION (CSS GRID & ANIMATIONS FLUIDES) --- */
+        /* --- CARDS DE FORMATION --- */
         .courses-section {
             padding: 80px 5%;
             max-width: 1300px;
@@ -305,7 +303,6 @@
             flex-direction: column;
         }
 
-        /* Effet 3D et bordure lumineuse au survol */
         .course-card:hover {
             transform: translateY(-10px) scale(1.02);
             box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5);
@@ -377,10 +374,10 @@
             font-weight: 800;
         }
 
-        /* --- RESPONSIVE DESIGN & HAMBURGER HACK --- */
+        /* --- RESPONSIVE DESIGN --- */
         @media (max-width: 768px) {
             .menu-label {
-                display: flex; /* On affiche le bouton burger */
+                display: flex;
             }
 
             .nav-links {
@@ -402,12 +399,10 @@
                 font-size: 20px;
             }
 
-            /* Logique de bascule du menu si coché */
             .menu-checkbox:checked ~ .nav-links {
                 left: 0;
             }
 
-            /* Transformations de l'icône hamburger en 'X' à l'activation */
             .menu-checkbox:checked ~ .menu-label span:nth-child(1) {
                 transform: translateY(8px) rotate(45deg);
             }
@@ -444,7 +439,6 @@
     <header class="header">
         <a href="#" class="logo">OfficeAcademy</a>
         
-        <!-- Toggle d'état HTML pur -->
         <input type="checkbox" id="nav-toggle" class="menu-checkbox">
         
         <label for="nav-toggle" class="menu-label">
@@ -461,10 +455,9 @@
         </ul>
     </header>
 
-    <!-- BANNIÈRE ADSENSE SUPÉRIEURE (Zone stratégique à haut clic) -->
+    <!-- BANNIÈRE ADSENSE SUPÉRIEURE -->
     <div style="margin-top: 90px;">
         <div class="ads-banner">
-            <!-- Remplacer ce bloc par votre code script Google AdSense -->
             <p>[ EMPLACEMENT PUBLICITÉ GOOGLE ADSENSE - BANNIÈRE HORIZONTALE 728x90 ]</p>
             <small>Publicité ciblée sur les outils bureautiques</small>
         </div>
@@ -516,7 +509,7 @@
                 </div>
             </div>
 
-            <!-- CARTE EXCEL (La plus vendeuse / rentable) -->
+            <!-- CARTE EXCEL -->
             <div class="course-card card-excel">
                 <div class="card-header bg-e">X</div>
                 <div class="card-body">
@@ -561,20 +554,20 @@
         </div>
     </section>
 
-    <!-- BANNIÈRE ADSENSE INFERIEURE (Zone de sortie pour retenir les clics sortants) -->
+    <!-- BANNIÈRE ADSENSE INFERIEURE -->
     <section id="bonus">
         <div class="ads-banner">
-            <!-- Remplacer ce bloc par votre code script Google AdSense -->
             <p>[ EMPLACEMENT PUBLICITÉ GOOGLE ADSENSE - ANNONCE DE CONTENU CORRESPONDANT 336x280 ]</p>
             <small>Partenaire officiel de contenu éducatif informatique</small>
         </div>
     </section>
 
-    <!-- FOOTER / ZONE DE LIENS DE PARTENARIATS -->
+    <!-- FOOTER -->
     <footer style="padding: 40px 5%; text-align: center; border-top: 1px solid #1e293b; color: var(--text-muted); font-size: 14px;" id="contact">
         <p>© 2026 OfficeAcademy. Tous droits réservés.</p>
         <p style="margin-top: 10px; font-size: 12px;">En tant que partenaire, ce site perçoit une commission sur les outils ou ouvrages bureautiques recommandés.</p>
     </footer>
 
 </body>
-</html>
+    </html>
+                                
